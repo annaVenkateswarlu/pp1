@@ -1,0 +1,46 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Page -->
+        <div id="welcome-page" class="welcome-container" style="display:none;">
+            <h2 id="welcome-message"></h2>
+            <button class="logout-btn" id="logout-btn">Logout</button>
+        </div>
+
+        <!-- Login Form -->
+        <div id="login-form" class="form-box">
+            <h2>Login</h2>
+            <form id="login">
+                <input type="email" id="login-email" required placeholder="Email">
+                <input type="password" id="login-password" required placeholder="Password">
+                <button type="submit" class="btn">Login</button>
+                <p class="switch-form">Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
+                <p class="message" id="login-error"></p>
+            </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div id="signup-form" class="form-box" style="display:none;">
+            <h2>Signup</h2>
+            <form id="signup">
+                <input type="text" id="signup-name" required placeholder="Name">
+                <input type="email" id="signup-email" required placeholder="Email">
+                <input type="password" id="signup-password" required placeholder="Password">
+                <button type="submit" class="btn">Signup</button>
+                <p class="switch-form">Already have an account? <a href="#" id="switch-to-login">Log in</a></p>
+                <p class="message" id="signup-error"></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

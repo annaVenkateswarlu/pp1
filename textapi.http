@@ -1,0 +1,112 @@
+### Candidate Signup
+POST http://localhost:3001/api/candidates/signup
+Content-Type: application/json
+
+{
+    "name": "John Doe",
+    "email": "john@eample.com",
+    "password": "securepassword"
+}
+
+### Candidate Login
+POST http://localhost:3001/api/candidates/login
+Content-Type: application/json
+
+{
+    "email": "john@eample.com",
+    "password": "securepassword"
+}
+
+### Candidate Logout
+POST http://localhost:3001/api/candidates/logout
+Content-Type: application/json
+
+{}
+
+### Submit Form
+POST http://localhost:3001/api/candidates/submit
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MjgzMDQsImV4cCI6MTcyNzYzMTkwNH0.ML6LBuZGx-h8dk_hT9aoSdYudbQE_FmRteXOPwC__5c
+Content-Type: application/json
+
+{
+    "formField": "value"
+}
+
+### Get Assignments
+GET http://localhost:3001/api/assignment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTcxNzkyNjUyOSwiZXhwIjoxNzE3OTMwMTI5fQ.o1XiI-ep3MxUtvGgt8a1qZxZpfz-OvPJEyKEEvphgH4
+
+### Admin Signup
+POST http://localhost:3001/api/admin/signup
+Content-Type: application/json
+
+{
+    "name": "Admin User",
+    "email": "admin@example.com",
+    "password": "adminpassword"
+}
+
+### Admin Login
+POST http://localhost:3000/api/admin/login
+Content-Type: application/json
+
+{
+    "email": "admin@example.com",
+    "password": "adminpassword"
+}
+
+### Admin Logout
+POST http://localhost:3000/api/admin/logout
+Content-Type: application/json
+
+{}
+
+### Create Team
+POST http://localhost:3000/api/admin/teams
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "teamName": "New Team"
+}
+
+### Post Assignment
+POST http://localhost:3000/api/admin/assignment
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "assignmentTitle": "New Assignment",
+    "description": "Details about the assignment"
+}
+
+### Get Responses
+GET http://localhost:3000/api/admin/responses
+Authorization: Bearer 
+
+### Schedule Meeting
+POST http://localhost:3000/api/admin/meetings
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "meetingTime": "2024-10-01T10:00:00Z",
+    "participants": ["john@example.com", "admin@example.com"]
+}
+
+### Delete Response
+DELETE http://localhost:3000/api/admin/responses/1
+Authorization: Bearer 
+
+### Display Response
+GET http://localhost:3000/api/admin/responses/1
+Authorization: Bearer 
+
+### Recruit Button
+POST http://localhost:3000/api/admin/recruit/1
+Authorization: Bearer 
+Content-Type: application/json
+
+{
+    "status": "recruited"
+}
