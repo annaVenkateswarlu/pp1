@@ -176,4 +176,12 @@ Login Process: Handles authentication and displays a personalized welcome messag
 
 Logout Functionality: Resets to the login form upon logout.
 
+
+Photos:
+
+![About us](https://github.com/user-attachments/assets/3ac69a77-61cd-4bc6-a82f-9e6ecaa80feb)
+
+![Login Page](https://github.com/user-attachments/assets/a1401557-7433-4ad9-9f23-33e8949a3460)
+
+
 Thank you!
