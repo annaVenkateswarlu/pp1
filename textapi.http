@@ -25,7 +25,7 @@ Content-Type: application/json
 
 ### Submit Form
 POST http://localhost:3001/api/candidates/submit
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MjgzMDQsImV4cCI6MTcyNzYzMTkwNH0.ML6LBuZGx-h8dk_hT9aoSdYudbQE_FmRteXOPwC__5c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM4OTgsImV4cCI6MTcyNzYzNzQ5OH0.obRaU_yGHhTx9a42j_0371zPbkChPf0nxOT-6M6H3-o
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ### Get Assignments
 GET http://localhost:3001/api/assignment
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsImlhdCI6MTcxNzkyNjUyOSwiZXhwIjoxNzE3OTMwMTI5fQ.o1XiI-ep3MxUtvGgt8a1qZxZpfz-OvPJEyKEEvphgH4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM4OTgsImV4cCI6MTcyNzYzNzQ5OH0.obRaU_yGHhTx9a42j_0371zPbkChPf0nxOT-6M6H3-o
 
 ### Admin Signup
 POST http://localhost:3001/api/admin/signup
@@ -47,7 +47,7 @@ Content-Type: application/json
 }
 
 ### Admin Login
-POST http://localhost:3000/api/admin/login
+POST http://localhost:3001/api/admin/login
 Content-Type: application/json
 
 {
@@ -56,14 +56,14 @@ Content-Type: application/json
 }
 
 ### Admin Logout
-POST http://localhost:3000/api/admin/logout
+POST http://localhost:3001/api/admin/logout
 Content-Type: application/json
 
 {}
 
 ### Create Team
-POST http://localhost:3000/api/admin/teams
-Authorization: Bearer 
+POST http://localhost:3001/api/admin/teams
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM5NTYsImV4cCI6MTcyNzYzNzU1Nn0.xq1U8CRhGm7WmLOTLhRzeV6wa-kOeZ8n8JH0dKGdt7Q
 Content-Type: application/json
 
 {
@@ -71,8 +71,8 @@ Content-Type: application/json
 }
 
 ### Post Assignment
-POST http://localhost:3000/api/admin/assignment
-Authorization: Bearer 
+POST http://localhost:3001/api/admin/assignment
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM5NTYsImV4cCI6MTcyNzYzNzU1Nn0.xq1U8CRhGm7WmLOTLhRzeV6wa-kOeZ8n8JH0dKGdt7Q
 Content-Type: application/json
 
 {
@@ -80,13 +80,9 @@ Content-Type: application/json
     "description": "Details about the assignment"
 }
 
-### Get Responses
-GET http://localhost:3000/api/admin/responses
-Authorization: Bearer 
-
 ### Schedule Meeting
-POST http://localhost:3000/api/admin/meetings
-Authorization: Bearer 
+POST http://localhost:3001/api/admin/meetings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM5NTYsImV4cCI6MTcyNzYzNzU1Nn0.xq1U8CRhGm7WmLOTLhRzeV6wa-kOeZ8n8JH0dKGdt7Q
 Content-Type: application/json
 
 {
@@ -94,19 +90,20 @@ Content-Type: application/json
     "participants": ["john@example.com", "admin@example.com"]
 }
 
-### Delete Response
-DELETE http://localhost:3000/api/admin/responses/1
-Authorization: Bearer 
-
-### Display Response
-GET http://localhost:3000/api/admin/responses/1
-Authorization: Bearer 
-
 ### Recruit Button
-POST http://localhost:3000/api/admin/recruit/1
-Authorization: Bearer 
+POST http://localhost:3001/api/admin/recruit/anna
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc2MzM5NTYsImV4cCI6MTcyNzYzNzU1Nn0.xq1U8CRhGm7WmLOTLhRzeV6wa-kOeZ8n8JH0dKGdt7Q
 Content-Type: application/json
 
 {
     "status": "recruited"
+}
+
+### Apply for a Position
+POST http://localhost:3001/api/candidates/apply
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mjc3MDgyOTAsImV4cCI6MTcyNzcxMTg5MH0.MH7s-Q2wBbmTMgBj28I0CTVaRhIq7jnP2pe0Q9V94nw
+Content-Type: application/json
+
+{
+    "position": "Frontend Developer"
 }
