@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 const db = mysql.createConnection({
-    host: 'localhost', // Your database host
-    user: 'root',      // Your database user
-    password: 'java123', // Your database password
-    database: 'your_database' // Your database name
+    host: 'localhost', //  database host
+    user: 'root',      //  database user
+    password: 'java123', // database password
+    database: 'your_database' // database name
 });
 
 // Connect to the database
@@ -118,6 +118,7 @@ app.post('/api/admin/signup', (req, res) => {
     const sql = 'INSERT INTO admins (name, email, password) VALUES (?, ?, ?)';
     db.query(sql, [name, email, password], (err) => {
         if (err) {
+            console.error(err)
             return res.status(400).json({ error: 'Admin already exists!' });
         }
         res.json({ message: 'Admin signup successful!' });
@@ -141,7 +142,8 @@ app.post('/api/admin/login', (req, res) => {
     });
 });
 
-// Admin Logout (optional, usually client-side)
+// Admin Logout 
+
 app.post('/api/admin/logout', (req, res) => {
     // Invalidate the token on the client-side
     res.json({ message: 'Admin logout successful!' });
@@ -171,62 +173,32 @@ app.post('/api/admin/assignment', authenticateJWT, (req, res) => {
     });
 });
 
-// Get Responses
-app.get('/api/admin/responses', authenticateJWT, (req, res) => {
-    const sql = 'SELECT * FROM responses';
-    db.query(sql, (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to retrieve responses.' });
-        }
-        res.json(results);
-    });
-});
-
 // Schedule Meeting
 app.post('/api/admin/meetings', authenticateJWT, (req, res) => {
     const { meetingDetails } = req.body; // Expecting details in the body
     const sql = 'INSERT INTO meetings (details) VALUES (?)';
+    
     db.query(sql, [meetingDetails], (err) => {
         if (err) {
+            console.log(err)
             return res.status(400).json({ error: 'Failed to schedule meeting!' });
         }
         res.json({ message: 'Meeting scheduled successfully!' });
     });
 });
 
-// Delete Response
-app.delete('/api/admin/responses/:id', authenticateJWT, (req, res) => {
-    const { id } = req.params;
-    const sql = 'DELETE FROM responses WHERE id = ?';
-    db.query(sql, [id], (err) => {
-        if (err) {
-            return res.status(400).json({ error: 'Failed to delete response!' });
-        }
-        res.json({ message: `Response with ID ${id} deleted successfully!` });
-    });
-});
-
-// Display Response
-app.get('/api/admin/responses/:responseId', authenticateJWT, (req, res) => {
-    const { responseId } = req.params;
-    const sql = 'SELECT * FROM responses WHERE id = ?';
-    db.query(sql, [responseId], (err, results) => {
-        if (err || results.length === 0) {
-            return res.status(404).json({ error: 'Response not found!' });
-        }
-        res.json(results[0]);
-    });
-});
 
 // Recruit Button
-app.post('/api/admin/recruit/:candidateId', authenticateJWT, (req, res) => {
-    const { candidateId } = req.params;
-    const sql = 'UPDATE candidates SET status = ? WHERE id = ?';
-    db.query(sql, ['recruited', candidateId], (err) => {
+app.post('/api/admin/recruit/:name', authenticateJWT, (req, res) => {
+    const { name } = req.params;
+    console.log(name);
+    const sql = 'UPDATE candidates SET status = ? WHERE name = ?';
+    db.query(sql, ['recruited', name], (err) => {
         if (err) {
+            console.log(err);
             return res.status(400).json({ error: 'Failed to recruit candidate!' });
         }
-        res.json({ message: `Candidate with ID ${candidateId} recruited successfully!` });
+        res.json({ message: `Candidate with name ${name} recruited successfully!` });
     });
 });
 
@@ -235,3 +207,19 @@ app.listen(3001, () => {
     console.log(`Server is running on http://localhost:${3001}`);
 });
 
+
+// Apply for a position
+app.post('/api/candidates/apply', authenticateJWT, (req, res) => {
+    const { position } = req.body;
+    if (!position) {
+        return res.status(400).json({ error: 'Position is required!' });
+    }
+
+    const sql = 'INSERT INTO applications (position) VALUES (?)';
+    db.query(sql, [position], (err) => {
+        if (err) {
+            return res.status(500).json({ error: 'Failed to apply for the position.' });
+        }
+        res.json({ message: `Successfully applied for the ${position} position!` });
+    });
+});
