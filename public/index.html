@@ -8,13 +8,55 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div id="ka1" class="container">
         <!-- Welcome Page -->
         <div id="welcome-page" class="welcome-container" style="display:none;">
-            <h2 id="welcome-message"></h2>
-            <button class="logout-btn" id="logout-btn">Logout</button>
-        </div>
-
+            <header>
+                <nav class="navbar">
+                    <a href="#" class="logo"><img src="https://i.ytimg.com/vi/I5DdkXZYARo/maxresdefault.jpg" alt="DAKSH Logo"></a>
+                    <ul class="nav-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </nav>
+            </header>
+            
+            <section class="banner">
+                <h1>Join Our Recruitment Process</h1>
+                <h2 id="welcome-message"></h2>
+                <button><a href="#login" style="color: white;">Get Started</a></button>
+            </section>
+            
+            <section id="about">
+                <h2>About Us</h2>
+                <p>We build and maintain responsive, user-friendly websites that enhance the digital experience. They ensure seamless functionality and security while delivering innovative web solutions.</p>
+            </section>
+        
+            <section id="careers">
+                <h2>Open Positions</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Frontend Developer</h3>
+                        <p>Join our creative team to develop intuitive interfaces for web and mobile apps.</p>
+                        <button class="apply-now" data-position="Frontend Developer">Apply Now</button>
+                    </div>
+                    <div class="card">
+                        <h3>Backend Developer</h3>
+                        <p>Build robust server-side logic and databases to support our growing applications.</p>
+                        <button class="apply-now" data-position="Backend Developer">Apply Now</button>
+                    </div>
+                    <div class="card">
+                        <h3>UI/UX Designer</h3>
+                        <p>Collaborate on design and prototypes to create visually stunning user experiences.</p>
+                        <button class="apply-now" data-position="UI/UX Designer">Apply Now</button>
+                    </div>
+                </div>
+            </section>
+            <footer>
+                <p class="ka">© 2024 Recruitment Process Management</p>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </footer>
+            </div>
         <!-- Login Form -->
         <div id="login-form" class="form-box">
             <h2>Login</h2>
