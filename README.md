@@ -50,6 +50,11 @@ Query OK, 0 rows affected (0.01 sec)
 mysql> create table meetings(details varchar(100));
 Query OK, 0 rows affected (0.01 sec)
 
+create table applications(id int,candidate_id int,position varchar(100),status varchar(100),created_at Datetime,u
+pdated_at Datetime)
+
+INSERT INTO applications (position) VALUES ('Frontend Developer');
+
 mysql> show tables;
 +-------------------------+
 | Tables_in_your_database |
@@ -142,6 +147,12 @@ Failure: Returns a 400 Bad Request status for invalid data.
 Success: Returns a 200 OK status for successful recruitment.
 Failure: Returns a 401 Unauthorized or 404 Not Found status.
 
+13. Apply for a Position
+
+Success:Returns a 200 OK status if the application is submitted successfully.
+Failure:
+Returns a 401 Unauthorized status if the token is invalid or missing.
+Returns a 404 Not Found status if the specified position does not exist.
 
 Frontend Explanation
 
