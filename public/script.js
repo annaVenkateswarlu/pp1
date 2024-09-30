@@ -7,7 +7,7 @@ const switchToLoginLink = document.getElementById('switch-to-login');
 const loginError = document.getElementById('login-error');
 const signupError = document.getElementById('signup-error');
 const logoutButton = document.getElementById('logout-btn');
-
+const kal2=document.getElementById('ka1');
 // Show login form by default
 loginForm.style.display = 'block';
 
@@ -66,6 +66,7 @@ loginForm.addEventListener('submit', async (e) => {
     console.log(result)
     if (response.ok) {
         loginForm.style.display = 'none';
+        kal2.style.width='100%';
         welcomePage.style.display = 'block';
         document.getElementById('welcome-message').textContent = `Hi ${result.name}`;
         loginForm.reset();
@@ -78,5 +79,26 @@ loginForm.addEventListener('submit', async (e) => {
 // Handle logout
 logoutButton.addEventListener('click', () => {
     welcomePage.style.display = 'none';
+    kal2.style.width='300px';
     loginForm.style.display = 'block';
+});
+
+// Handle Apply button click
+const applyNowButtons = document.querySelectorAll('.apply-now');
+applyNowButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+        const position = button.getAttribute('data-position');
+        const response = await fetch('/api/candidates/apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ position })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert(`You applied for the ${position} position!`);
+        } else {
+            alert(result.error);
+        }
+    });
 });
